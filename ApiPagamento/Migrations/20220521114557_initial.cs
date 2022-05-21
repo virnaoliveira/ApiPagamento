@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ApiPagamento.Migrations
 {
@@ -15,28 +14,13 @@ namespace ApiPagamento.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     titular = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     numero = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    data_expiracao = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    data_expiracao = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     bandeira = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     cvv = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Cartoes", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Pagamentos",
-                columns: table => new
-                {
-                    id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    id_compra = table.Column<int>(type: "int", nullable: false),
-                    valor = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    estado = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Pagamentos", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -69,9 +53,6 @@ namespace ApiPagamento.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Compras");
-
-            migrationBuilder.DropTable(
-                name: "Pagamentos");
 
             migrationBuilder.DropTable(
                 name: "Cartoes");

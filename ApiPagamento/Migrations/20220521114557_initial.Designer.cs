@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ApiPagamento.Migrations
 {
     [DbContext(typeof(PagamentoContexto))]
-    [Migration("20220521112656_initial")]
+    [Migration("20220521114557_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,8 +34,8 @@ namespace ApiPagamento.Migrations
                     b.Property<string>("cvv")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("data_expiracao")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("data_expiracao")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("numero")
                         .HasColumnType("nvarchar(max)");
@@ -66,27 +66,6 @@ namespace ApiPagamento.Migrations
                     b.HasIndex("cartaoId");
 
                     b.ToTable("Compras");
-                });
-
-            modelBuilder.Entity("ApiPagamentos.Model.Pagamento", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<string>("estado")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("id_compra")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("valor")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.HasKey("id");
-
-                    b.ToTable("Pagamentos");
                 });
 
             modelBuilder.Entity("ApiPagamentos.Model.Compra", b =>
