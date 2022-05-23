@@ -1,6 +1,6 @@
-# Desafio ApiCompras
+# Desafio ApiPagamento
 
-Essa api foi desenvolvida para consultar produtos cadastrados, detalhar um produto com base em um id, deletar produto e cadastrar produto.
+Essa api foi desenvolvida para lojas virtuais, que avalia se o valor mínimo de compra(R$100) foi atingido. Se sim, aprova a compra, se não, reprova.
 
 ### 📋 Pré-requisitos
 
